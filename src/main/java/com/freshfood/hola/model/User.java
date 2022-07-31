@@ -1,6 +1,7 @@
 package com.freshfood.hola.model;
 
 import lombok.Data;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -8,10 +9,10 @@ import java.util.Set;
 @Entity
 @Data
 @Table(name = "users")
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class User extends EntityAbstract{
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private Long id;
 
     @Column( nullable = false,unique = true)
     private String username;

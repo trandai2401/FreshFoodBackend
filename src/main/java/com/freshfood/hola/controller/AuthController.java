@@ -67,7 +67,7 @@ public class AuthController {
 
         }
         System.out.println(username);
-        return ResponseEntity.ok(username);
+        return ResponseEntity.ok(authentication);
 
     }
 

@@ -14,10 +14,16 @@ public class Check {
     @Autowired
     private IUserService userService;
 
-    @PostMapping("username")
+    @GetMapping("username")
     ResponseEntity<?> checkUsername(@RequestParam String q){
         Optional<User> user = userService.findByUsername(q) ;
-        System.out.println(q);
-        return ResponseEntity.ok(user);
+//        System.out.println(q);
+        return ResponseEntity.ok(user.isEmpty());
+    }
+    @GetMapping("email")
+    ResponseEntity<?> checkEmail(@RequestParam String q){
+        Optional<User> user = userService.findByEmail(q) ;
+        System.out.println(user.toString());
+        return ResponseEntity.ok(user.isEmpty());
     }
 }

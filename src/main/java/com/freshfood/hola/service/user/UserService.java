@@ -24,7 +24,6 @@ import java.util.Optional;
 @Service
 public class UserService implements IUserService {
 
-
     @Autowired
     private IUserRepository userRepository;
     @Autowired
@@ -77,5 +76,11 @@ public class UserService implements IUserService {
     @Override
     public Optional<User> findByUsername(String username) {
         return userRepository.findByUsername(username);
+    }
+
+    @Override
+    public Optional<User> findByEmail(String email) {
+        return userRepository.findByEmail(email);
+
     }
 }
