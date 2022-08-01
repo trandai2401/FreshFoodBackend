@@ -1,6 +1,7 @@
 package com.freshfood.hola.service.user;
 
 
+import com.freshfood.hola.exception.NotFoundException;
 import com.freshfood.hola.model.User;
 import com.freshfood.hola.configuration.security.UserPrinciple;
 import com.freshfood.hola.repository.IUserRepository;
@@ -83,4 +84,12 @@ public class UserService implements IUserService {
         return userRepository.findByEmail(email);
 
     }
+
+    @Override
+    public Optional<User> demo() {
+        throw new NotFoundException("khoong thay ban oi ");
+//        return Optional.empty();
+    }
+
+
 }

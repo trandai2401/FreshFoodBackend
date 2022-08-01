@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Optional;
+
 @CrossOrigin("*")
 @RestController
 public class AuthController {
@@ -55,7 +57,7 @@ public class AuthController {
     
     @PostMapping("/demo")
     public ResponseEntity<?> login() {
-       
+        Optional<User> user = userService.demo();
         return ResponseEntity.ok("Hi vọng vào mày nha");
     }
     @PostMapping("/username")
