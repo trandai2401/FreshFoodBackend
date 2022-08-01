@@ -1,7 +1,9 @@
 package com.freshfood.hola;
 
+import com.freshfood.hola.model.commerce.Cart;
 import com.freshfood.hola.model.Role;
 import com.freshfood.hola.model.User;
+import com.freshfood.hola.service.cart.ICartService;
 import com.freshfood.hola.service.role.IRoleService;
 import com.freshfood.hola.service.user.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,10 @@ public class FreshfoodApplication {
     private IUserService userService;
     @Autowired
     private IRoleService roleService;
+
+    @Autowired
+    private ICartService cartService;
+
     public static void main(String[] args) {
         SpringApplication.run(FreshfoodApplication.class, args);
     }
@@ -41,6 +47,13 @@ public class FreshfoodApplication {
             roleService.save(roleUser);
         }
         if (users.isEmpty()) {
+
+            Cart cart = new Cart();
+//            cartService.save(cart);
+
+
+
+
             User admin = new User();
             Set<Role> roles = new HashSet<>();
             Role roleAdmin = new Role();
@@ -50,7 +63,21 @@ public class FreshfoodApplication {
             admin.setUsername("admin");
             admin.setPassword("123456");
             admin.setRoles(roles);admin.setFullName("Hoa bu dic");
+            admin.setCart(cart);
             userService.save(admin);
+
+
+            admin = new User();
+            roleAdmin.setId(1L);
+            roleAdmin.setName("ROLE_ADMIN");
+            roles.add(roleAdmin);
+            admin.setUsername("admin2");
+            admin.setPassword("123456");
+            admin.setRoles(roles);admin.setFullName("Hoa bu dic");
+
+            userService.save(admin);
+
+
         }
     }
     @Bean

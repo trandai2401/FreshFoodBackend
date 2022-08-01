@@ -12,6 +12,7 @@ import lombok.Setter;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
@@ -37,9 +38,14 @@ public class EntityAbstract {
 	private LocalDateTime createdAt;
 
 	@UpdateTimestamp
-	private LocalDateTime updatedAt;
+	private LocalDateTime modifiedAt;
 
 	@CreatedBy
-	@Column(name = "created_by", nullable = false, updatable = false)
+	@Column( nullable = false, updatable = false)
 	public String createdBy;
+
+
+	@LastModifiedBy
+	@Column( nullable = false, updatable = false)
+	private String modifiedBy;
 }
